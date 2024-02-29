@@ -1,3 +1,46 @@
 Código de Biseccion - Ejercicio 1
 Funcion =  x^2 - 4
 
+package Método_de_Bisseccion;
+
+import java.util.function.Function;
+
+public class Ejercicio1 {
+    
+    public static double funcion(double x){
+        return x*x -4;
+    }
+    
+ public static double bisection(double a, double b, double tolerance, Function<Double, Double> func) {
+        if (func.apply(a) * func.apply(b) >= 0) {
+            throw new IllegalArgumentException("La función debe tener signos opuestos en los extremos dados");
+        }
+
+        double c = a;
+        while ((b - a) >= tolerance) {
+            // Encuentra el punto medio
+            c = (a + b) / 2;
+
+            // Verifica si el punto medio es raíz
+            if (func.apply(c) == 0.0)
+                break;
+
+            // Decide en qué mitad continuar
+            if (func.apply(c) * func.apply(a) < 0)
+                b = c;
+            else
+                a = c;
+        }
+        return c;
+    }
+ 
+  public static void main(String[] args) {
+        double a = 0; // Extremo izquierdo del intervalo
+        double b = 5; // Extremo derecho del intervalo
+        double tolerance = 0.0001; // Tolerancia
+        Function<Double, Double> func =  Ejercicio1::funcion; // Función
+
+        double root = bisection(a, b, tolerance, func);
+        System.out.println("La raíz de la función es aproximadamente: " + root);
+    }
+}
