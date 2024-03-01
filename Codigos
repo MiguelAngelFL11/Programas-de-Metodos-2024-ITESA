@@ -3,11 +3,13 @@
 %Version : 1.0
 %Actualizado : 29/02/2024
 
-//---------------------Algoritmo-------------------------\\
+//---------------------Algoritmos-------------------------\\
 
+//-------------------Código de Biseccion-------------------\\ 
 
-Código de Biseccion - Ejercicio 1
-Funcion =  x^2 - 4
+//----------------------Ejercicio 1------------------------\\
+
+//Su funcion es: x^2-4
 
 package Método_de_Bisseccion;
 
@@ -52,3 +54,257 @@ public class Ejercicio1 {
         System.out.println("La raíz de la función es aproximadamente: " + root);
     }
 }
+
+//----------------------Ejercicio 1------------------------\\
+
+//----------------------Ejercicio 2------------------------\\
+
+//Su funcion es: sen(x) - x/2
+
+package Método_de_Bisseccion;
+
+import java.util.Scanner;
+import java.util.function.Function;
+
+public class Ejercicio2 {
+    
+        public static double funcion(double x){
+        return Math.sin(x)-x/2.0;
+    }
+    
+ public static double biseccion(double a, double b, double tolerance) {
+  if (funcion(a) * funcion(b) >= 0) {
+            System.out.println("La raíz no está en el intervalo dado.");
+            return Double.NaN;
+        }
+
+        double c = a;
+        while ((b - a) >= tolerance) {
+            // Encuentra el punto medio
+            c = (a + b) / 2;
+
+            // Si el punto medio es la raíz
+            if (funcion(c) == 0.0)
+                break;
+
+            // Decide el lado en el que está la raíz y actualiza el intervalo
+            if (funcion(c) * funcion(a) < 0)
+                b = c;
+            else
+                a = c;
+        }
+        return c;
+    }
+ 
+  public static void main(String[] args) {
+              Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ingrese el extremo izquierdo del intervalo:");
+        double a = scanner.nextDouble();
+
+        System.out.println("Ingrese el extremo derecho del intervalo:");
+        double b = scanner.nextDouble();
+
+        System.out.println("Ingrese la tolerancia:");
+        double tolerance = scanner.nextDouble();
+
+        double root = biseccion(a, b, tolerance);
+
+        if (!Double.isNaN(root)) {
+            System.out.println("La raíz aproximada es: " + root);
+        }
+         scanner.close();
+    }
+}
+
+//----------------------Ejercicio 2------------------------\\
+
+//----------------------Ejercicio 3------------------------\\
+
+//Su funcion es: x^3-2x^2+4
+
+package Método_de_Bisseccion;
+
+import java.util.Scanner;
+
+public class Ejercicio3 {
+
+    public static double function(double x) {
+        return Math.pow(x, 3) - 2 * Math.pow(x, 2) + 4;
+    }
+
+    public static double bisection(double a, double b, double tolerance) {
+        if (function(a) * function(b) >= 0) {
+            System.out.println("La raíz no está en el intervalo dado.");
+            return Double.NaN;
+        }
+
+        double c = a;
+        while ((b - a) >= tolerance) {
+            // Encuentra el punto medio
+            c = (a + b) / 2;
+
+            // Si el punto medio es la raíz
+            if (function(c) == 0.0) {
+                break;
+            }
+
+            // Decide el lado en el que está la raíz y actualiza el intervalo
+            if (function(c) * function(a) < 0) {
+                b = c;
+            } else {
+                a = c;
+            }
+        }
+        return c;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ingrese el extremo izquierdo del intervalo:");
+        double a = scanner.nextDouble();
+
+        System.out.println("Ingrese el extremo derecho del intervalo:");
+        double b = scanner.nextDouble();
+
+        System.out.println("Ingrese la tolerancia:");
+        double tolerance = scanner.nextDouble();
+
+        double root = bisection(a, b, tolerance);
+
+        if (!Double.isNaN(root)) {
+            System.out.println("La raíz aproximada es: " + root);
+        }
+
+        scanner.close();
+    }
+}
+
+//----------------------Ejercicio 3------------------------\\
+
+//----------------------Ejercicio 4------------------------\\
+
+//Su funcion es: e^x-3x
+
+package Método_de_Bisseccion;
+
+import java.util.Scanner;
+
+public class Ejercicio4 {
+
+    public static double function(double x) {
+        return Math.exp(x) - 3 * x;
+    }
+
+    public static double biseccion(double a, double b, double tolerance) {
+        if (function(a) * function(b) >= 0) {
+            System.out.println("La raíz no está en el intervalo dado.");
+            return Double.NaN;
+        }
+
+        double c = a;
+        while ((b - a) >= tolerance) {
+            // Encuentra el punto medio
+            c = (a + b) / 2;
+
+            // Si el punto medio es la raíz
+            if (function(c) == 0.0) {
+                break;
+            }
+
+            // Decide el lado en el que está la raíz y actualiza el intervalo
+            if (function(c) * function(a) < 0) {
+                b = c;
+            } else {
+                a = c;
+            }
+        }
+        return c;
+    }
+    
+        public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ingrese el extremo izquierdo del intervalo:");
+        double a = scanner.nextDouble();
+
+        System.out.println("Ingrese el extremo derecho del intervalo:");
+        double b = scanner.nextDouble();
+
+        System.out.println("Ingrese la tolerancia:");
+        double tolerance = scanner.nextDouble();
+
+        double root = biseccion(a, b, tolerance);
+
+        if (!Double.isNaN(root)) {
+            System.out.println("La raíz aproximada es: " + root);
+        }
+
+        scanner.close();
+    }
+}
+
+//----------------------Ejercicio 4------------------------\\
+
+//----------------------Ejercicio 5------------------------\\
+
+//Su funcion es: x^2-5
+
+package Método_de_Bisseccion;
+
+import java.util.Scanner;
+
+public class Ejercicio5 {
+
+    public static double function(double x) {
+        return x*x - 5;
+    }
+
+  public static double bisection(double a, double b, double tolerance) {
+        if (function(a) * function(b) >= 0) {
+            System.out.println("La raíz no está en el intervalo dado.");
+            return Double.NaN;
+        }
+
+        double c = a;
+        while ((b - a) >= tolerance) {
+            // Encuentra el punto medio
+            c = (a + b) / 2;
+
+            // Si el punto medio es la raíz
+            if (function(c) == 0.0)
+                break;
+
+            // Decide el lado en el que está la raíz y actualiza el intervalo
+            if (function(c) * function(a) < 0)
+                b = c;
+            else
+                a = c;
+        }
+        return c;
+    }
+
+   public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ingrese el extremo izquierdo del intervalo:");
+        double a = scanner.nextDouble();
+
+        System.out.println("Ingrese el extremo derecho del intervalo:");
+        double b = scanner.nextDouble();
+
+        System.out.println("Ingrese la tolerancia:");
+        double tolerance = scanner.nextDouble();
+
+        double root = bisection(a, b, tolerance);
+
+        if (!Double.isNaN(root)) {
+            System.out.println("La raíz aproximada es: " + root);
+        }
+
+        scanner.close();
+    }
+}
+
+//----------------------Ejercicio 5------------------------\\
